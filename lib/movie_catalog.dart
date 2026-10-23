@@ -1,3 +1,4 @@
+
 /// Список фільмів для лабораторної роботи №1.
 const List<String> movieData = [
   'Inception;Christopher Nolan;2010;148;Sci-Fi;8.8',
@@ -116,7 +117,10 @@ Map<String, List<Movie>> groupByGenre(List<Movie> movies) {
 }
 
 /// Сортує фільми за рейтингом, а потім за роком випуску.
-List<Movie> sortMovies(List<Movie> movies, {bool ascending = false}) {
+List<Movie> sortMovies(
+  List<Movie> movies, {
+  bool ascending = false,
+}) {
   final sorted = [...movies];
 
   sorted.sort((a, b) {
@@ -145,7 +149,8 @@ int movieAge(Movie movie) {
   var years = today.year - releaseDate.year;
 
   if (today.month < releaseDate.month ||
-      (today.month == releaseDate.month && today.day < releaseDate.day)) {
+      (today.month == releaseDate.month &&
+          today.day < releaseDate.day)) {
     years--;
   }
 
@@ -166,8 +171,7 @@ String maskYears(String text) {
     return 'XXXX';
   });
 }
-
-/// Створює лічильник фільмів за допомогою замикання.
+// Створює лічильник фільмів за допомогою замикання.
 int Function() createMovieCounter() {
   var count = 0;
 

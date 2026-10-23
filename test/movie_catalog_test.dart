@@ -1,3 +1,4 @@
+
 import 'package:movie_catalog/movie_catalog.dart';
 import 'package:test/test.dart';
 
@@ -18,6 +19,7 @@ void main() {
 
   test('Правильне зчитування фільму', () {
     final movie = parseMovie(movieData[0]);
+
     expect(movie?.title, 'Inception');
     expect(movie?.year, 2010);
   });
@@ -28,22 +30,27 @@ void main() {
 
   test('Перевірка некоректного рейтингу', () {
     final movie = parseMovie('Test;Director;2020;120;Drama;15.0');
+
     expect(movie, isNotNull);
     expect(validateMovie(movie!), isNotEmpty);
   });
 
   test('Фільтрація за рейтингом', () {
-    expect(filterByRating(movies, 8.5).length, 6);
+    final filtered = filterByRating(movies, 8.5);
+
+    expect(filtered.length, 6);
   });
 
   test('Групування за жанрами', () {
     final groups = groupByGenre(movies);
+
     expect(groups.length, 4);
     expect(groups['Sci-Fi']?.length, 3);
   });
 
   test('Сортування за рейтингом', () {
     final sorted = sortMovies(movies);
+
     expect(sorted.first.title, 'The Dark Knight');
     expect(sorted.last.title, 'Avatar');
   });
@@ -63,3 +70,4 @@ void main() {
     expect(report, contains('Кількість фільмів: 12'));
   });
 }
+
